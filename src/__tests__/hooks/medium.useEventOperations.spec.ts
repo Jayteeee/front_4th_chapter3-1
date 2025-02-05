@@ -21,7 +21,14 @@ vi.mock('@chakra-ui/react', async () => {
   };
 });
 
-it('저장되어있는 초기 이벤트 데이터를 적절하게 불러온다', async () => {});
+it('저장되어있는 초기 이벤트 데이터를 적절하게 불러온다', async () => {
+  setupMockHandlerCreation(server);
+  const { result, waitForNextUpdate } = renderHook(() => useEventOperations());
+
+  await waitForNextUpdate();
+
+  expect(result.current.events).toHaveLength(3);
+});
 
 it('정의된 이벤트 정보를 기준으로 적절하게 저장이 된다', async () => {});
 
