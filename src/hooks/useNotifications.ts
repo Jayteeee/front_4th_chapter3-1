@@ -9,6 +9,7 @@ export const useNotifications = (events: Event[]) => {
   const [notifiedEvents, setNotifiedEvents] = useState<string[]>([]);
 
   const checkUpcomingEvents = () => {
+    console.log('checkUpcomingEvents called'); // 디버깅용 로그
     const now = new Date();
     const upcomingEvents = getUpcomingEvents(events, now, notifiedEvents);
 
